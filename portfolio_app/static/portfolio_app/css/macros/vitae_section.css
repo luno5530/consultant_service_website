@@ -1,0 +1,12 @@
+.vitae-section {
+    background: #fafafa;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+.vita-heading {
+    background-image: linear-gradient(to left, #553c9a, #b393d3);
+
+}

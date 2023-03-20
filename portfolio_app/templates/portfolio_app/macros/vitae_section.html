@@ -1,0 +1,11 @@
+{% comment %}
+    Macro to repsent a section of a curriculum-vitae
+
+    Arguments:
+    'cvs': Information corresponding to a section of a curriculum vitae (cvs)
+{% endcomment %}
+
+<div class="vitae-section">
+    <h3 class="vitae-heading">{{cvs.heading}}</h3>
+    <p>{{cvs.content}}</p>
+</div>

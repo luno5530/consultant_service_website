@@ -1,0 +1,78 @@
+{% extends "./base_templates/html_skeleton.html" %}
+{% load static %}
+
+
+{% block head %}
+
+{% with title="Über mich" %}
+{{ block.super }}
+{% endwith %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'portfolio_app/css/macros/vitae_section.css' %}" type="text/css"/>
+
+{% endblock head %}
+
+{% block content %}
+
+<div class="container-fluid p-0">
+    <!-- Backgroundimage-->
+    <div class="p-5 text-center bg-image" style="
+                background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp');
+                height: 400px;
+            ">
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white">
+                    <h1 class="mb-3">Über mich</h1>
+                    <h4 class="mb-3">{{ profile.first_name }} {{ profile.surname }}</h4>
+                    <a class="btn btn-outline-light btn-lg" href="#!" role="button">Kontaktieren Sie mich</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="conatiner">
+        <article class="d-flex flex-row justify-content-center align-items-center p-2">
+            <!-- justify... always works on main - axis. (row main-axis = horizontal)-->
+            <div class="media-body w-50 d-inline-flex justify-content-center">
+                <div class="d-inline-flex flex-column align-items-start" style="width:600px;">
+                    <h2 class="article-title">Hallo</h2>
+                    <div class="article-metadata">
+                        <small class="text-muted">Wer ich bin & was ich mache</small>
+                    </div>
+                    <p class="article-content">{{ profile.description }}</p>
+                </div>
+            </div>
+            <div class="w-25 d-flex justify-content-center p-2">
+                <img class="  img-fluid" src='{{ profile.image.url }}'>
+            </div>
+        </article>
+    </div>
+</div>
+<!-- sectikon for curriculum vitae)-->
+<section class="container">
+    <div class="d-flex">
+        <!-- left side - for canvas animation)-->
+        <div class="col-1 d-flex flex-column flex-items-center">
+
+            <div class="mb-4 position-relative home-campaign-glowing-icon js-build-in-item build-in-scale-fade build-in-animate" style="transition-delay: 0ms;">
+                <svg aria-hidden="true" height="24" viewBox="0 0 24 24" version="1.1" width="24" data-view-component="true" class="octicon octicon-briefcase">
+                  <path d="M7.5 1.75C7.5.784 8.284 0 9.25 0h5.5c.966 0 1.75.784 1.75 1.75V4h4.75c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0 1 21.25 22H2.75A1.75 1.75 0 0 1 1 20.25V5.75C1 4.784 1.784 4 2.75 4H7.5Zm-5 10.24v8.26c0 .138.112.25.25.25h18.5a.25.25 0 0 0 .25-.25v-8.26A4.235 4.235 0 0 1 18.75 13H5.25a4.235 4.235 0 0 1-2.75-1.01Zm19-3.24v-3a.25.25 0 0 0-.25-.25H2.75a.25.25 0 0 0-.25.25v3a2.75 2.75 0 0 0 2.75 2.75h13.5a2.75 2.75 0 0 0 2.75-2.75Zm-6.5-7a.25.25 0 0 0-.25-.25h-5.5a.25.25 0 0 0-.25.25V4h6Z"></path>
+              </svg>
+                <span class="position-absolute left-0 top-0 height-full width-full home-campaign-glowing-icon-glow z-n1" style="background-color: var(--mktg-accent-primary); filter: blur(18px);"></span>
+            </div>
+
+            <div class=" height-full rounded js-build-in-item build-in-scale-top build-in-animate" style="background: linear-gradient(#56d364, #2ea043, var(--color-canvas-default)); transition-delay: 500ms;" data-build-delay="500"></div>
+
+        </div>    
+        <!-- right side - for content)-->
+        <div class="col-11">
+            {% for cvs in profile.curriculum_vita%}
+            {% endfor %}
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock content %}
